@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { TFunction } from 'i18next'
-import {Form, Formik, FormikProps} from 'formik'
+import { Form, Formik, FormikProps } from 'formik'
 import { isEmpty } from 'lodash'
 import Button from '@mui/joy/Button'
 
@@ -36,6 +36,7 @@ const SignUpForm = () => {
   }, [t])
 
   const onSubmit = useCallback((values: FormFields) => {
+    // eslint-disable-next-line
     console.log(values)
   }, [])
 
