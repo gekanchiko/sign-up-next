@@ -1,3 +1,24 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:react-hooks/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "object-curly-spacing": ["warn", "always"],
+    "quotes": ["warn", "single"],
+    "semi": ["warn", "never"],
+//    "@typescript-eslint/no-unused-vars": ["warn"],
+    "max-len": [
+      "error",
+      {
+        "code": 110,
+        "tabWidth": 2,
+        "ignoreComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ]
+  }
 }
