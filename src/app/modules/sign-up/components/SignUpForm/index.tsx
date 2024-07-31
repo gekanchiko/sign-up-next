@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { TFunction } from 'i18next'
-import { Form, Formik } from 'formik'
+import {Form, Formik, FormikProps} from 'formik'
 import { isEmpty } from 'lodash'
 import Button from '@mui/joy/Button'
 
@@ -26,14 +26,14 @@ const SignUpForm = () => {
   const [dynamicErrors, setDynamicErrors] = useState<string[]>([])
 
   const onValidate = useCallback((values: FormFields) => {
-    validationSchema
+    validationSchema(t)
       .validate(values, { abortEarly: false })
       .then(() => setDynamicErrors([]))
       .catch((err) => setDynamicErrors(
         err.errors.filter((error: string) =>
           Object.values(dynamicErrorKeys).includes(error)))
       )
-  }, [])
+  }, [t])
 
   const onSubmit = useCallback((values: FormFields) => {
     console.log(values)
@@ -43,10 +43,12 @@ const SignUpForm = () => {
     <Formik
       initialValues={{ email: '', password: '' }}
       onSubmit={onSubmit}
-      validationSchema={validationSchema}
+      validationSchema={validationSchema(t)}
       validate={onValidate}
     >
-      {({ submitCount, values }) => {
+      {(formProps: FormikProps<any>) => {
+        const { submitCount, values } = formProps
+
         return (
           <Form style={{ width: '100%' }}>
             <FlexRow>
@@ -55,6 +57,7 @@ const SignUpForm = () => {
                 type="text"
                 name="email"
                 placeholder={t`Type your email`}
+                formProps={formProps}
               />
             </FlexRow>
             <FlexRow>
@@ -63,6 +66,7 @@ const SignUpForm = () => {
                 type="password"
                 name="password"
                 placeholder={t`Create your password`}
+                formProps={formProps}
               />
             </FlexRow>
             <FlexRow direction={{ xs: 'column' }} align={{ xs: 'start' }} p={{ xs: '0 12px' }}>

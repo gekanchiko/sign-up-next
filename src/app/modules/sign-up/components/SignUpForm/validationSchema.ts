@@ -1,5 +1,6 @@
 import { string, object } from 'yup'
 import { isUndefined, isNull } from 'lodash'
+import { TFunction } from 'i18next'
 
 export const dynamicErrorKeys = {
   has8CharsNoSpaces: 'has-8-chars-no-spaces',
@@ -7,8 +8,8 @@ export const dynamicErrorKeys = {
   has1Digit: 'has-1-digit'
 }
 
-export const validationSchema = object().shape({
-  email: string().email('The email is not correct').required('Mandatory'),
+export const validationSchema = (t: TFunction) => object().shape({
+  email: string().email(t`The email is not correct`).required(t`Mandatory`),
   password: string()
     .test(
       dynamicErrorKeys.has8CharsNoSpaces,
@@ -31,5 +32,5 @@ export const validationSchema = object().shape({
         if (isUndefined(value)) return true
         return !isNull(/[0-9]/.exec(value))
       })
-    .required('Mandatory')
+    .required(t`Mandatory`)
 })
