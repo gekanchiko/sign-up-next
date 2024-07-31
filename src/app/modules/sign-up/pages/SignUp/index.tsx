@@ -13,10 +13,11 @@ const SignUp = () => {
 
   return (
     <FlexRow
-      h={{ xs: '100vh' }}
+      h={{ xs: '100svh' }}
       background={{ xs: 'linear-gradient(#F4F9FF, #E0EDFB)' }}
       direction={{ xs: 'column' }}
       p={{ xs: 24 }}
+      style={{ maxHeight: '100svh' }}
     >
       <If condition={!!data}>
         <FlexRow w={{ xs: 'auto' }} mb={{ xs: 20 }}>
