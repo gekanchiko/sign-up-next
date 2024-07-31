@@ -9,6 +9,7 @@ import ModalClose from '@mui/joy/ModalClose'
 import { FlexRow, Text } from '@/app/modules/components'
 
 import SignUpForm from '../../components/SignUpForm'
+import StarsBackground from '../../components/StarsBackground'
 
 const SignUp = () => {
   const { t } = useTranslation()
@@ -23,19 +24,25 @@ const SignUp = () => {
   return (
     <FlexRow
       h={{ xs: '100svh' }}
-      background={{ xs: 'linear-gradient(#F4F9FF, #E0EDFB)' }}
       direction={{ xs: 'column' }}
-      p={{ xs: 24 }}
-      style={{ maxHeight: '100svh' }}
+      justify={{ xs: 'start', md: 'center' }}
+      p={{ xs: '22vh 24px 24px 24px', md: 24 }}
+      style={{ maxHeight: '100svh', overflow: 'hidden' }}
+      position={{ xs: 'relative' }}
+      background={{ xs: 'linear-gradient(#F4F9FF, #E0EDFB)' }}
     >
-      <FlexRow w={{ xs: 'auto' }} mb={{ xs: 20 }}>
-        <Text size={{ xs: 28 }} element={'h1'} color={{ xs: '#4A4E71' }} weight={{ xs: 700 }}>
-          {t`Sign up`}
-        </Text>
-      </FlexRow>
+      <StarsBackground />
 
-      <FlexRow w={{ xs: '100%', md: 500 }} mb={{ xs: 20 }}>
-        <SignUpForm onSuccess={onSuccess} />
+      <FlexRow w={{ xs: '100%', sm: 400, md: 500 }} direction={{ xs: 'column' }} style={{ zIndex: 1 }}>
+        <FlexRow w={{ xs: 'auto' }} mb={{ xs: 40 }}>
+          <Text size={{ xs: 28 }} element={'h1'} color={{ xs: '#4A4E71' }} weight={{ xs: 700 }}>
+            {t`Sign up`}
+          </Text>
+        </FlexRow>
+
+        <FlexRow mb={{ xs: 20 }}>
+          <SignUpForm onSuccess={onSuccess} />
+        </FlexRow>
       </FlexRow>
 
       <Modal open={open} onClose={() => setOpen(false)}>
