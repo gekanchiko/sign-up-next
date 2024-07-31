@@ -1,10 +1,16 @@
 {
   "extends": [
     "next/core-web-vitals",
+    "react-app",
     "plugin:react-hooks/recommended",
+    "eslint:recommended",
     "prettier"
   ],
+  "plugins": ["react-refresh", "@stylistic"],
   "rules": {
+    "@stylistic/indent": ["error", 2],
+    "no-console": ["error"],
+    "react-refresh/only-export-components": "warn",
     "object-curly-spacing": ["warn", "always"],
     "quotes": ["warn", "single"],
     "semi": ["warn", "never"],

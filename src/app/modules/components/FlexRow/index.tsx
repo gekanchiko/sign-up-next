@@ -204,57 +204,57 @@ type Ref = HTMLButtonElement
 // eslint-disable-next-line react/display-name
 const FlexRow = forwardRef<Ref, FlexRowProps>(
   (props: FlexRowProps, ref: ForwardedRef<HTMLButtonElement> | undefined) => {
-  const {
-    children,
-    onClick,
-    style = {},
-    w = { xs: '100%', },
-    h = { xs: 'auto', },
-    direction = { xs: 'row', },
-    justify = { xs: 'center', },
-    align = { xs: 'center', },
-    // Padding
-    pt = { xs: 'unset', },
-    pr = { xs: 'unset', },
-    pb = { xs: 'unset', },
-    pl = { xs: 'unset', },
-    // Margin
-    mt = { xs: 'unset', },
-    mr = { xs: 'unset', },
-    mb = { xs: 'unset', },
-    ml = { xs: 'unset', },
+    const {
+      children,
+      onClick,
+      style = {},
+      w = { xs: '100%', },
+      h = { xs: 'auto', },
+      direction = { xs: 'row', },
+      justify = { xs: 'center', },
+      align = { xs: 'center', },
+      // Padding
+      pt = { xs: 'unset', },
+      pr = { xs: 'unset', },
+      pb = { xs: 'unset', },
+      pl = { xs: 'unset', },
+      // Margin
+      mt = { xs: 'unset', },
+      mr = { xs: 'unset', },
+      mb = { xs: 'unset', },
+      ml = { xs: 'unset', },
 
-    background = { xs: 'none', },
-    position = { xs: 'unset', },
-    ...rest
-  } = props
+      background = { xs: 'none', },
+      position = { xs: 'unset', },
+      ...rest
+    } = props
 
     return (
-    <Div
+      <Div
       // @ts-ignore
-      ref={ref}
-      inlist={{
-        ...rest,
-        w,
-        h,
-        direction,
-        justify,
-        align,
-        pt,
-        pr,
-        pb,
-        pl,
-        mt,
-        mr,
-        mb,
-        ml,
-        background,
-        position
-      }}
-      style={style}
-      onClick={onClick}
-    >{children}</Div>
-  )
-})
+        ref={ref}
+        inlist={{
+          ...rest,
+          w,
+          h,
+          direction,
+          justify,
+          align,
+          pt,
+          pr,
+          pb,
+          pl,
+          mt,
+          mr,
+          mb,
+          ml,
+          background,
+          position
+        }}
+        style={style}
+        onClick={onClick}
+      >{children}</Div>
+    )
+  })
 
 export default FlexRow

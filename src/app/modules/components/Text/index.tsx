@@ -22,7 +22,7 @@ type TextProps = {
   decoration?: DecorationType,
   letterSpacing?: LetterSpacingType,
   transform?: TransformationType,
-  element: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'p',
+  element?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'p',
   color?: ColorType
 }
 
@@ -47,6 +47,7 @@ const Text = (props: TextProps) => {
 
     return {
       fontFamily: 'sans-serif',
+      margin: 0,
       [theme.breakpoints.up('xs')]: {
         fontSize: size?.xs,
         fontWeight: weight?.xs,

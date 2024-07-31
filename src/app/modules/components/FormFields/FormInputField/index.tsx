@@ -3,7 +3,7 @@ import { useField } from 'formik'
 import Input from '@mui/joy/Input'
 import { v4 as uuidv4 } from 'uuid'
 
-import { FlexRow } from '../..'
+import { FlexRow, Text } from '../..'
 import { ErrorContainer } from './styles'
 
 type InputFieldProps = {
@@ -26,6 +26,7 @@ const FormInputField = (props: InputFieldProps) => {
       const inputEl = document.getElementById(inputId)
       if (inputEl) {
         inputEl.focus()
+        // @ts-ignore
         inputEl.select()
       }
     }
@@ -33,8 +34,6 @@ const FormInputField = (props: InputFieldProps) => {
   }, [])
 
   const hasErrorAfterBlur = useMemo(() => meta.touched && !!meta.error, [meta.error, meta.touched])
-
-  console.log(name, hasErrorAfterBlur)
 
   return (
     <FlexRow position={{ xs: 'relative' }} mb={{ xs: 25 }}>
@@ -49,9 +48,16 @@ const FormInputField = (props: InputFieldProps) => {
         />
       </FlexRow>
       {!hideErrors && hasErrorAfterBlur && (
-        <ErrorContainer>
-          {meta.error}
-        </ErrorContainer>
+        <FlexRow
+          w={{ xs: 'auto' }}
+          p={{ xs: '6px 12px' }}
+          position={{ xs: 'absolute' }}
+          style={{ bottom: 0, insetInlineStart: 0, transform: 'translateY(100%)' }}
+        >
+          <Text size={{ xs: 12 }} color={{ xs: '#FF8080' }}>
+            {meta.error}
+          </Text>
+        </FlexRow>
       )}
     </FlexRow>
   )
