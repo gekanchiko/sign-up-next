@@ -41,6 +41,7 @@ export const theme = extendTheme({
         root: ({ ownerState }) => {
           const [isFocused, isError, isSuccess] = getStatus(ownerState)
           return {
+            background: '#FFFFFF',
             overflow: 'hidden',
             borderRadius: 10,
             border: `1px solid ${inputColors.Borders.Neutral}`,
@@ -48,6 +49,9 @@ export const theme = extendTheme({
             '&:before': {
               boxShadow: 'none',
             },
+            ...(ownerState.disabled && {
+              background: '#E8E9ED'
+            }),
             ...(isFocused && {
               border: `1px solid ${inputColors.Borders.Focus}`
             }),
@@ -62,7 +66,7 @@ export const theme = extendTheme({
         input: ({ ownerState }) => {
           const [isFocused, isError, isSuccess] = getStatus(ownerState)
           return {
-            background: '#FFFFFF',
+            background: 'transparent',
             padding: '10px, 10px, 10px, 20px',
             height: 48,
             color: inputColors.Text.Neutral,
