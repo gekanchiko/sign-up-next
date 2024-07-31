@@ -78,7 +78,7 @@ const FormInputField = (props: InputFieldProps) => {
             isPasswordField && (
               <VisibilityIconComponent
                 onClick={handleOnVisibilityClick}
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: 'pointer', fontSize: 20 }}
               />
             )
           }
