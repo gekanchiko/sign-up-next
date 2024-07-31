@@ -1,4 +1,4 @@
-import React, { useCallback, useState, memo } from 'react'
+import React, { useCallback, useState, memo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Form, Formik, FormikProps } from 'formik'
 import Button from '@mui/joy/Button'
@@ -8,15 +8,26 @@ import { FormInputField } from '@/app/modules/components/FormFields'
 
 import DynamicValidationNotes from './DynamicValidationNotes'
 import { validationSchema, dynamicErrorKeys } from './validationSchema'
+import { useSignUpMutation } from '../../mutations'
 
 export interface FormFields {
   email: string;
   password: string;
 }
 
-const SignUpForm = () => {
+interface SignUpFormProps {
+  onSuccess: (data: any) => void
+}
+
+const SignUpForm = (props: SignUpFormProps) => {
+  const { onSuccess } = props
   const { t } = useTranslation()
   const [dynamicErrors, setDynamicErrors] = useState<string[]>([])
+  const { data, mutate: doSignUp, isPending, isSuccess } = useSignUpMutation()
+
+  useEffect(() => {
+    if (isSuccess && data) onSuccess(data)
+  }, [data, isSuccess, onSuccess])
 
   const onValidate = useCallback((values: FormFields) => {
     validationSchema(t)
@@ -29,9 +40,8 @@ const SignUpForm = () => {
   }, [t])
 
   const onSubmit = useCallback((values: FormFields) => {
-    // eslint-disable-next-line
-    console.log(values)
-  }, [])
+    doSignUp(values)
+  }, [doSignUp])
 
   return (
     <Formik
@@ -76,7 +86,7 @@ const SignUpForm = () => {
                   fullWidth
                   size="md"
                   type="submit"
-                  loading={false}
+                  loading={isPending}
                 >
                   {t`Sign up`}
                 </Button>

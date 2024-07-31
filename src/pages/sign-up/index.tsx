@@ -3,6 +3,7 @@ import { isEmpty } from 'lodash'
 import { CssVarsProvider, extendTheme, InputOwnerState } from '@mui/joy'
 
 import SignUp from '@/app/modules/sign-up/pages/SignUp'
+import { ReactQueryProvider } from '@/app/providers'
 
 const getStatus = (ownerState: InputOwnerState & Record<string, unknown>): boolean[] => {
   const isError = !ownerState.focused && !!ownerState.error
@@ -107,9 +108,11 @@ const theme = extendTheme({
 
 const SignUpPage = () => {
   return (
-    <CssVarsProvider theme={theme}>
-      <SignUp />
-    </CssVarsProvider>
+    <ReactQueryProvider>
+      <CssVarsProvider theme={theme}>
+        <SignUp />
+      </CssVarsProvider>
+    </ReactQueryProvider>
   )
 }
 
