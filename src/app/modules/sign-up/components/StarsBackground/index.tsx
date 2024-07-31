@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-import { FlexRow } from '@/app/modules/components'
+import { FlexRow } from '@/app/modules/common/components'
 
 type Star = {
   pos: {

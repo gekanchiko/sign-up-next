@@ -6,7 +6,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 import { v4 as uuidv4 } from 'uuid'
 import { isEmpty } from 'lodash'
 
-import { FlexRow, Text } from '../..'
+import { FlexRow, Text } from '../../index'
 
 type InputFieldProps = {
   type: 'text' | 'number' | 'password',

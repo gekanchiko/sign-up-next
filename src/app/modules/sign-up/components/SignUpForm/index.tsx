@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { Form, Formik, FormikProps } from 'formik'
 import Button from '@mui/joy/Button'
 
-import { FlexRow } from '@/app/modules/components'
-import { FormInputField } from '@/app/modules/components/FormFields'
+import { FlexRow } from '@/app/modules/common/components'
+import { FormInputField } from '@/app/modules/common/components/FormFields'
 
 import DynamicValidationNotes from './DynamicValidationNotes'
 import { validationSchema, dynamicErrorKeys } from './validationSchema'

@@ -6,7 +6,7 @@ import DialogTitle from '@mui/joy/DialogTitle'
 import DialogContent from '@mui/joy/DialogContent'
 import ModalClose from '@mui/joy/ModalClose'
 
-import { FlexRow, Text } from '@/app/modules/components'
+import { FlexRow, Text } from '@/app/modules/common/components'
 
 import SignUpForm from '../../components/SignUpForm'
 import StarsBackground from '../../components/StarsBackground'
