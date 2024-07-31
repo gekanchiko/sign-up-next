@@ -15,13 +15,23 @@ type InputFieldProps = {
   formProps: FormikProps<any>,
   style?: object,
   autofocus?: boolean,
-  hideErrors?: boolean
+  hideErrors?: boolean,
+  disabled?: boolean
 }
 
 const inputId: string = `${uuidv4()}`
 
 const FormInputField = (props: InputFieldProps) => {
-  const { autofocus, type, name, placeholder, style, hideErrors, formProps } = props
+  const {
+    autofocus,
+    type,
+    name,
+    placeholder,
+    style,
+    hideErrors,
+    formProps,
+    disabled
+  } = props
   const isPasswordField = type === 'password'
   const { submitCount } = formProps
 
@@ -82,6 +92,7 @@ const FormInputField = (props: InputFieldProps) => {
               />
             )
           }
+          disabled={disabled}
           {...field}
         />
       </FlexRow>

@@ -62,6 +62,7 @@ const SignUpForm = (props: SignUpFormProps) => {
                 name="email"
                 placeholder={t`Type your email`}
                 formProps={formProps}
+                disabled={isPending}
               />
             </FlexRow>
             <FlexRow>
@@ -71,6 +72,7 @@ const SignUpForm = (props: SignUpFormProps) => {
                 name="password"
                 placeholder={t`Create your password`}
                 formProps={formProps}
+                disabled={isPending}
               />
             </FlexRow>
             <FlexRow direction={{ xs: 'column' }} align={{ xs: 'start' }} p={{ xs: '0 12px' }}>
@@ -87,6 +89,7 @@ const SignUpForm = (props: SignUpFormProps) => {
                   size="md"
                   type="submit"
                   loading={isPending}
+                  disabled={isPending}
                 >
                   {t`Sign up`}
                 </Button>
